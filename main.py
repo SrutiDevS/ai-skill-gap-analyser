@@ -6,6 +6,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 
+app = FastAPI()   # ← MUST BE HERE (move this up)
+
 conn = sqlite3.connect("skill_gap.db", check_same_thread=False)
 cursor = conn.cursor()
 
@@ -20,7 +22,6 @@ CREATE TABLE IF NOT EXISTS analysis_history (
 """)
 
 conn.commit()
-app = FastAPI()
 from fastapi.staticfiles import StaticFiles
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
