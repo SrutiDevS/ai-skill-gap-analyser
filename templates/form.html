@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Skill Gap Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="result-container">
+
+    <h1 class="main-title">Measure. Improve. Get Hired.</h1>
+    <p class="subtitle">AI Skill Gap Analyzer</p>
+
+    <form action="/analyze" method="post" class="analyze-form">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Job Role</label>
+            <select name="role" required>
+    <option value="backend developer">Backend Developer</option>
+    <option value="frontend developer">Frontend Developer</option>
+    <option value="data analyst">Data Analyst</option>
+    <option value="ai engineer">AI Engineer</option>
+</select>
+        </div>
+
+        <div class="form-group">
+            <label>Skills (comma separated)</label>
+            <textarea name="skills" required></textarea>
+        </div>
+
+        <button type="submit" class="analyze-btn">Analyze</button>
+
+    </form>
+
+</div>
+</body>
+</html>

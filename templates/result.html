@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<body>
+
+<div class="result-container">
+
+    <h1 class="main-title">Your Skill Analysis</h1>
+    <p class="subtitle">
+        Here’s how you compare to the {{ role|title }} role
+    </p>
+
+    <!-- SCORE CIRCLE -->
+    <div class="score-circle">
+        <div class="inner-circle">
+            <h2>{{ percentage }}%</h2>
+            <p class="fit-text">{{ fit_level }}</p>
+        </div>
+    </div>
+
+    <!-- CARDS SECTION -->
+    <div class="cards-container">
+
+        <!-- MATCHED -->
+        <div class="info-card">
+            <h3>Matched Skills</h3>
+            <div class="skill-list">
+                {% for skill in matched %}
+                    <span class="skill-chip">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+       <div class="info-card">
+    <h3>Recommendations</h3>
+    <ul class="recommend-list">
+        {% for skill, suggestion in recommendations.items() %}
+            <li><strong>{{ skill }}:</strong> {{ suggestion }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+        <!-- RECOMMENDATIONS -->
+        <div class="info-card">
+            <h3>Recommendations</h3>
+            <ul class="recommend-list">
+                {% for skill in missing %}
+                    <li>Practice {{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+    <a href="/" class="analyze-btn">Analyze Another Role</a>
+
+</div>
+</body>
+</html>
