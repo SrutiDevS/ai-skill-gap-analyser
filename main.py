@@ -72,16 +72,17 @@ def analyze(
     missing = list(required_skills - set(skill_list))
 
     match_percentage = int((len(matched) / len(required_skills)) * 100) if required_skills else 0
+    recommendations = {
+        skill: SKILL_RECOMMENDATIONS.get(skill, "Work on improving this skill.")
+        for skill in missing
+    }
+
     if match_percentage >= 80:
         fit_level = "Strong Fit"
     elif match_percentage >= 50:
         fit_level = "Moderate Fit"
     else:
         fit_level = "Weak Fit"
-        recommendations = {
-            skill: SKILL_RECOMMENDATIONS.get(skill, "Work on improving this skill.")
-            for skill in missing
-        }
 
     return templates.TemplateResponse("result.html", {
         "request": request,
